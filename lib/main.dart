@@ -61,8 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  //This is where the Bluetooth and WiFi logs would be collected and start.
   void _startBluetoothLogging(){
     //This is where the Bluetooth and WiFi logs would be collected and start.
+  }
+  void _startWiFILogging(){
+
   }
 
   @override
@@ -76,9 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Container(
+
         child: Column(
           // Column is also layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
@@ -100,18 +103,32 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            RaisedButton.icon(
-                onPressed: _startBluetoothLogging,
-                icon: Icon(Icons.bluetooth),
-                label: Text('Start Bluetooth Logging'))
+            //THIS IS THE BOTTOM BUTTONS
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                RaisedButton.icon(
+                  onPressed: _startBluetoothLogging,
+                  icon: Icon(Icons.bluetooth),
+                  label: Text('Start Bluetooth Logging'),
+                ),
+                RaisedButton.icon(
+                  onPressed: _startWiFILogging,
+                  icon: Icon(Icons.wifi),
+                  label: Text('Start WiFi Logging'),
+                ),
+              ],
+            ),
+            //END BOTTOM BUTTONS
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Share Logs',
         child: Icon(Icons.mail),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+
     );
     return scaffold;
   }
