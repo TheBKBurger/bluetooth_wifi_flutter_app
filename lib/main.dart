@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(backgroundColor: Colors.black12,
+      theme: ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+
       ),
       home: MyHomePage(title: 'Bluetooth & WiFi Info App'),
     );
@@ -60,15 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _startBluetoothLogging(){
+    //This is where the Bluetooth and WiFi logs would be collected and start.
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
+
+    var scaffold = Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -90,12 +92,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
-              'This is a test of the text that will have some sort of instructions on it.',
+              'This is an application created to collect Bluetooth data during stress testing. Please ensure the phone will not turn off the display or go to sleep at any time.',
+            textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            RaisedButton.icon(
+                onPressed: _startBluetoothLogging,
+                icon: Icon(Icons.bluetooth),
+                label: Text('Start Bluetooth Logging'))
           ],
         ),
       ),
@@ -105,5 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.mail),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+    return scaffold;
   }
 }
